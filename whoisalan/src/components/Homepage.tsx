@@ -4,6 +4,12 @@ import { useState, useRef, useEffect } from 'react';
 import { AiFillFolder, AiFillYoutube, AiFillFileText, AiOutlineDesktop, AiTwotoneTool } from "react-icons/ai";
 //Import background image
 import windowsBG from "../assets/windowsBG.jpg"
+//Import Bootstrap Components
+import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
+import 'bootstrap/dist/css/bootstrap.min.css'; //bootstrap styles
+
+
 //add draggable div logic
 const Draggable: React.FC<{ initialPos: { x: number; y: number }; children: React.ReactNode }> = ({ initialPos, children }) => {
     const [pos, setPos] = useState<{ x: number; y: number }>(initialPos);
@@ -57,7 +63,7 @@ const Draggable: React.FC<{ initialPos: { x: number; y: number }; children: Reac
             document.removeEventListener('mousemove', onMouseMove);
             document.removeEventListener('mouseup', onMouseUp);
         };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [dragging]);
 
     return (
@@ -76,26 +82,56 @@ const Draggable: React.FC<{ initialPos: { x: number; y: number }; children: Reac
     );
 };
 
+interface ModalProps {
+    show: boolean;
+    onHide: () => void;
+}
+
+//Modal Scripts
+const AboutMeModal: React.FC<ModalProps> = ({ show, onHide }) => {
+    return (
+        <Modal
+            show={show}
+            onHide={onHide}
+            size="lg"
+            aria-labelledby="contained-modal-title-vcenter"
+            centered
+        >
+            <Modal.Header closeButton>
+                <Modal.Title id="contained-modal-title-vcenter">
+                    About Me
+                </Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+                <p>
+                    HELLO MY MY NAME IS ALAN 
+                </p>
+            </Modal.Body>
+            <Modal.Footer>
+                <Button varaint="primary" onClick={onHide}>Close</Button>
+            </Modal.Footer>
+        </Modal>
+    );
+}
+
+
 const Homepage: React.FC = () => {
+    //modal useStates
+    const [modalShow, setModalShow] = useState(false);
+
     return (
         <div className="flex items-center justify-center h-screen bg-cover" style={{ backgroundImage: `url(${windowsBG})` }}>
             <Draggable initialPos={{ x: 100, y: 200 }}>
-                <div className="my-draggable" style={{ border: '2px solid #aa5', padding: '10px' }}>
-                    Drag Me! See how children are passed through to the div!
+                <div className="my-draggable" className='p-2.5'>
+                    <Button className="bg-transparent border-0" onDoubleClick={() => setModalShow(true)}>
+                        <AiFillFolder size={70} style={{ color: 'rgb(234, 179, 8)' }}></AiFillFolder>
+                        <h5>About Me</h5>
+                    </Button>
                 </div>
-            </Draggable>
-            <Draggable initialPos={{ x: 100, y: 200 }}>
-                <div className="my-draggable" style={{ border: '2px solid #aa5', padding: '10px' }}>
-                    Drag Me! See how children are passed through to the div!
-                </div>
-            </Draggable>
-            <Draggable initialPos={{ x: 100, y: 200 }}>
-                <div className="my-draggable" style={{ border: '2px solid #aa5', padding: '10px' }}>
-                    Drag Me! See how children are passed through to the div!
-                </div>
+                <AboutMeModal show={modalShow} onHide={() => setModalShow(false)} />
             </Draggable>
         </div>
     );
-};
+}
 
 export default Homepage;
