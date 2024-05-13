@@ -114,22 +114,138 @@ const AboutMeModal: React.FC<ModalProps> = ({ show, onHide }) => {
     );
 }
 
+const GallaryModal: React.FC<ModalProps> = ({ show, onHide }) => {
+    return (
+        <Modal
+            show={show}
+            onHide={onHide}
+            size="lg"
+            aria-labelledby="contained-modal-title-vcenter"
+            centered
+        >
+            <Modal.Header closeButton>
+                <Modal.Title id="contained-modal-title-vcenter">
+                    About Me
+                </Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+                <p>
+                    Gallery of my recent works
+                </p>
+            </Modal.Body>
+            <Modal.Footer>
+                <Button varaint="primary" onClick={onHide}>Close</Button>
+            </Modal.Footer>
+        </Modal>
+    );
+}
+
+const YoutubeModal: React.FC<ModalProps> = ({ show, onHide }) => {
+    return (
+        <Modal
+            show={show}
+            onHide={onHide}
+            size="lg"
+            aria-labelledby="contained-modal-title-vcenter"
+            centered
+        >
+            <Modal.Header closeButton>
+                <Modal.Title id="contained-modal-title-vcenter">
+                    About Me
+                </Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+                <p>
+                    Preview of my youtube page
+                </p>
+            </Modal.Body>
+            <Modal.Footer>
+                <Button varaint="primary" onClick={onHide}>Close</Button>
+            </Modal.Footer>
+        </Modal>
+    );
+}
+
+const ToolsModal: React.FC<ModalProps> = ({ show, onHide }) => {
+    return (
+        <Modal
+            show={show}
+            onHide={onHide}
+            size="lg"
+            aria-labelledby="contained-modal-title-vcenter"
+            centered
+        >
+            <Modal.Header closeButton>
+                <Modal.Title id="contained-modal-title-vcenter">
+                    Tools
+                </Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+                <p>
+                    A list of tools/skills/technologies I use
+                </p>
+            </Modal.Body>
+            <Modal.Footer>
+                <Button varaint="primary" onClick={onHide}>Close</Button>
+            </Modal.Footer>
+        </Modal>
+    );
+}
+
 
 const Homepage: React.FC = () => {
     //modal useStates
-    const [modalShow, setModalShow] = useState(false);
+    const [aboutMeShow, setAboutMe] = useState(false);
+    const [youTubeShow, setYouTube] = useState(false);
+    const [gallaryShow, setGallary] = useState(false);
+    const [toolsShow, setTools] = useState(false);
 
     return (
         <div className="flex items-center justify-center h-screen bg-cover" style={{ backgroundImage: `url(${windowsBG})` }}>
+            {/**About Me Modal */}
             <Draggable initialPos={{ x: 100, y: 200 }}>
                 <div className="my-draggable" className='p-2.5'>
-                    <Button className="bg-transparent border-0" onDoubleClick={() => setModalShow(true)}>
+                    <Button className="bg-transparent border-0" onDoubleClick={() => setAboutMe(true)}>
                         <AiFillFolder size={70} style={{ color: 'rgb(234, 179, 8)' }}></AiFillFolder>
                         <h5>About Me</h5>
                     </Button>
                 </div>
-                <AboutMeModal show={modalShow} onHide={() => setModalShow(false)} />
+                <AboutMeModal show={aboutMeShow} onHide={() => setAboutMe(false)} />
             </Draggable>
+
+            {/**Gallary Modal */}
+            <Draggable initialPos={{ x: 100, y: 200 }}>
+                <div className="my-draggable" className='p-2.5'>
+                    <Button className="bg-transparent border-0" onDoubleClick={() => setGallary(true)}>
+                        <AiOutlineDesktop size={70} style={{ color: "black" }} ></AiOutlineDesktop>
+                        <h5>Gallary</h5>
+                    </Button>
+                </div>
+                <GallaryModal show={gallaryShow} onHide={() => setGallary(false)} />
+            </Draggable>
+
+            {/**Youtube Modal */}
+            <Draggable initialPos={{ x: 100, y: 200 }}>
+                <div className="my-draggable" className='p-2.5'>
+                    <Button className="bg-transparent border-0" onDoubleClick={() => setYouTube(true)}>
+                        <AiFillYoutube size={70} style={{ color: "red" }}></AiFillYoutube>
+                        <h5>YouTube</h5>
+                    </Button>
+                </div>
+                <YoutubeModal show={youTubeShow} onHide={() => setYouTube(false)} />
+            </Draggable>
+
+            {/**Tools Modal */}
+            <Draggable initialPos={{ x: 100, y: 200 }}>
+                <div className="my-draggable" className='p-2.5'>
+                    <Button className="bg-transparent border-0" onDoubleClick={() => setTools(true)}>
+                        <AiTwotoneTool size={70} style={{ color: 'gray' }}></AiTwotoneTool>
+                        <h5>Tools</h5>
+                    </Button>
+                </div>
+                <ToolsModal show={toolsShow} onHide={() => setTools(false)} />
+            </Draggable>
+
         </div>
     );
 }
