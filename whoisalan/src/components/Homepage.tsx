@@ -1,7 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 //Icon Imports
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { AiFillFolder, AiFillYoutube, AiFillFileText, AiOutlineDesktop, AiTwotoneTool } from "react-icons/ai";
+import { AiFillFolder, AiFillYoutube, AiOutlineDesktop, AiTwotoneTool } from "react-icons/ai";
 //Import background image
 import windowsBG from "../assets/windowsBG.jpg"
 //Import Bootstrap Components
@@ -108,7 +107,7 @@ const AboutMeModal: React.FC<ModalProps> = ({ show, onHide }) => {
                 </p>
             </Modal.Body>
             <Modal.Footer>
-                <Button varaint="primary" onClick={onHide}>Close</Button>
+                <Button variant="primary" onClick={onHide}>Close</Button>
             </Modal.Footer>
         </Modal>
     );
@@ -134,7 +133,7 @@ const GallaryModal: React.FC<ModalProps> = ({ show, onHide }) => {
                 </p>
             </Modal.Body>
             <Modal.Footer>
-                <Button varaint="primary" onClick={onHide}>Close</Button>
+                <Button variant="primary" onClick={onHide}>Close</Button>
             </Modal.Footer>
         </Modal>
     );
@@ -160,7 +159,7 @@ const YoutubeModal: React.FC<ModalProps> = ({ show, onHide }) => {
                 </p>
             </Modal.Body>
             <Modal.Footer>
-                <Button varaint="primary" onClick={onHide}>Close</Button>
+                <Button variant="primary" onClick={onHide}>Close</Button>
             </Modal.Footer>
         </Modal>
     );
@@ -186,7 +185,7 @@ const ToolsModal: React.FC<ModalProps> = ({ show, onHide }) => {
                 </p>
             </Modal.Body>
             <Modal.Footer>
-                <Button varaint="primary" onClick={onHide}>Close</Button>
+                <Button variant="primary" onClick={onHide}>Close</Button>
             </Modal.Footer>
         </Modal>
     );
@@ -204,7 +203,7 @@ const Homepage: React.FC = () => {
         <div className="flex items-center justify-center h-screen bg-cover" style={{ backgroundImage: `url(${windowsBG})` }}>
             {/**About Me Modal */}
             <Draggable initialPos={{ x: 100, y: 200 }}>
-                <div className="my-draggable" className='p-2.5'>
+                <div id="my-draggable" className='p-2.5'>
                     <Button className="bg-transparent border-0" onDoubleClick={() => setAboutMe(true)}>
                         <AiFillFolder size={70} style={{ color: 'rgb(234, 179, 8)' }}></AiFillFolder>
                         <h5>About Me</h5>
@@ -215,7 +214,7 @@ const Homepage: React.FC = () => {
 
             {/**Gallary Modal */}
             <Draggable initialPos={{ x: 150, y: 250 }}>
-                <div className="my-draggable" className='p-2.5'>
+                <div id="my-draggable" className='p-2.5'>
                     <Button className="bg-transparent border-0" onDoubleClick={() => setGallary(true)}>
                         <AiOutlineDesktop size={70} style={{ color: "black" }} ></AiOutlineDesktop>
                         <h5>Gallary</h5>
@@ -226,7 +225,7 @@ const Homepage: React.FC = () => {
 
             {/**Youtube Modal */}
             <Draggable initialPos={{ x: 200, y: 100 }}>
-                <div className="my-draggable" className='p-2.5'>
+                <div id="my-draggable" className='p-2.5'>
                     <Button className="bg-transparent border-0" onDoubleClick={() => setYouTube(true)}>
                         <AiFillYoutube size={70} style={{ color: "red" }}></AiFillYoutube>
                         <h5>YouTube</h5>
@@ -237,7 +236,7 @@ const Homepage: React.FC = () => {
 
             {/**Tools Modal */}
             <Draggable initialPos={{ x: 250, y: 150 }}>
-                <div className="my-draggable" className='p-2.5'>
+                <div id="my-draggable" className='p-2.5'>
                     <Button className="bg-transparent border-0" onDoubleClick={() => setTools(true)}>
                         <AiTwotoneTool size={70} style={{ color: 'gray' }}></AiTwotoneTool>
                         <h5>Tools</h5>
