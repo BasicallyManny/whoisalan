@@ -214,7 +214,7 @@ const Homepage: React.FC = () => {
             </Draggable>
 
             {/**Gallary Modal */}
-            <Draggable initialPos={{ x: 100, y: 200 }}>
+            <Draggable initialPos={{ x: 150, y: 250 }}>
                 <div className="my-draggable" className='p-2.5'>
                     <Button className="bg-transparent border-0" onDoubleClick={() => setGallary(true)}>
                         <AiOutlineDesktop size={70} style={{ color: "black" }} ></AiOutlineDesktop>
@@ -225,7 +225,7 @@ const Homepage: React.FC = () => {
             </Draggable>
 
             {/**Youtube Modal */}
-            <Draggable initialPos={{ x: 100, y: 200 }}>
+            <Draggable initialPos={{ x: 200, y: 100 }}>
                 <div className="my-draggable" className='p-2.5'>
                     <Button className="bg-transparent border-0" onDoubleClick={() => setYouTube(true)}>
                         <AiFillYoutube size={70} style={{ color: "red" }}></AiFillYoutube>
@@ -236,7 +236,7 @@ const Homepage: React.FC = () => {
             </Draggable>
 
             {/**Tools Modal */}
-            <Draggable initialPos={{ x: 100, y: 200 }}>
+            <Draggable initialPos={{ x: 250, y: 150 }}>
                 <div className="my-draggable" className='p-2.5'>
                     <Button className="bg-transparent border-0" onDoubleClick={() => setTools(true)}>
                         <AiTwotoneTool size={70} style={{ color: 'gray' }}></AiTwotoneTool>
